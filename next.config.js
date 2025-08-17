@@ -25,7 +25,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  output: 'standalone',
 };
 
 module.exports = withNextIntl(withMDX(nextConfig));
