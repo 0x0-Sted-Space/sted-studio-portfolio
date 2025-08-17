@@ -5,6 +5,7 @@
 **Fix**: Multiple deployment configuration fixes applied
 
 ## Changes Made:
+
 1. Removed problematic vercel.json with invalid runtime configs
 2. Updated API routes from Pages Router to App Router
 3. Fixed next.config.js standalone output mode
