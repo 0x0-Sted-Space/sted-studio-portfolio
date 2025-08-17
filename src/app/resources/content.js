@@ -1,0 +1,338 @@
+import { InlineCode } from "@/once-ui/components";
+
+const person = {
+    firstName: 'Shiva Karan',
+    lastName:  'K',
+    get name() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+    role:      'Sustainable Dev Guy',
+    avatar:    '/images/avatar.jpeg',
+    location:  'Vizag',        // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ['English']  // optional: Leave the array empty if you don't want to display languages
+}
+
+const newsletter = {
+    display: true,
+    title: `Subscribe to ${person.firstName}'s Newsletter`,
+    description: "We occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering for Sustainable Development"
+}
+
+const social = [
+    // Links are automatically displayed.
+    // Import new icons in /once-ui/icons.ts
+    {
+        name: 'GitHub',
+        icon: 'github',
+        link: 'https://github.com/shiva-karan-k',
+    },
+    {
+        name: 'LinkedIn',
+        icon: 'linkedin',
+        link: 'https://www.linkedin.com/in/shiva-karan/',
+    },
+    {
+        name: 'X',
+        icon: 'x',
+        link: 'https://x.com/Shiva_KaranK',
+    },
+    {
+        name: 'Email',
+        icon: 'email',
+        link: 'mailto:lucky3aeon@yahoo.com',
+    },
+]
+
+const home = {
+    label: 'Home',
+    title: `${person.name}'s Portfolio`,
+    description: `Portfolio website showcasing my work as a ${person.role}`,
+    headline: 'Holaaa!',
+    subline: `I'm Shiva, an education engineer at Enhance42, where I craft intuitive user experiences across training & hiring systems while toying around with Gen-AI tools & Web 3 Tech. I run this micro Product Studio which helps people with their 0-1 Journey's. Creators, Freelancers, Startups or wannapreneurs, drop us a line. See you on the other side.`
+}
+
+const about = {
+    label: 'About',
+    title: 'About me',
+    description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+    tableOfContent: {
+        display: true,
+        subItems: false
+    },
+    avatar: {
+        display: true
+    },
+    calendar: {
+        display: true,
+        link: 'https://cal.com'
+    },
+    intro: {
+        display: true,
+        title: 'Introduction',
+        description: 'Sted Studio is a Vizag-based Product Studio with a passion for transforming complex challenges into simple, elegant design solutions. Our work spans digital interfaces, interactive experiences, and the convergence of design and technology for Sustainable Development.'
+    },
+    work: {
+        display: true, // set to false to hide this section
+        title: 'Work Experience',
+        experiences: [
+            {
+                company: 'Enhance42',
+                timeframe: '2019 - Present',
+                role: 'Jr Education Engineer',
+                achievements: [
+                    'Redesigning how current day engineers build, ship & scale.',
+                    'Spearheaded the integration of AI tools into design & dev workflows, enabling engineers to iterate 50% faster on ideas.'
+                ],
+                images: [
+                    {
+                        src: '/images/projects/project-01/cover-01.png',
+                        alt: 'Enhance42',
+                        width: 16,
+                        height: 9
+                    }
+                ]
+            },
+            {
+                company: 'Almora',
+                timeframe: '2017 - 2018',
+                role: 'Entrepreneur In Residence',
+                achievements: [
+                    'At an investment bank which handled about 50BTC Fund, we brewed about 5 interesting tokens Gladage, Griffex.co, Decubes, Enblick, ThecryptoUpdates & many more interesting things in web 3 space.',
+                    'Led a cross-functional teams to launch a new product lines, with couple of projects getting $3MN underwriting.'
+                ],
+                images: [ 
+                    {src: '/images/projects/project-01/cover-021.png', alt: 'GriffexPOC', width: 16, height: 9},
+                    {src: '/images/projects/project-01/cover-022.png', alt: 'Enblick', width: 16, height: 9},
+                    {src: '/images/projects/project-01/cover-023.jpg', alt: 'Decubes', width: 16, height: 9}
+                ]
+            }
+        ]
+    },
+    studies: {
+        display: true, // set to false to hide this section
+        title: 'Studies',
+        institutions: [
+            { name: 'University of Life', description: 'Civil Engineer by profession, sustainable architect by passion. Homegrown innovators by vizag startups, enhance42, vizag volunteers.' },
+            { name: 'Internet University', description: 'From wine making to content creation, from idea to product.' },
+            { name: 'E42 University', description: 'From 0-1 Journey of becoming a developer' }
+        ]
+    },
+    technical: {
+        display: true, // set to false to hide this section
+        title: 'Technical skills',
+        skills: [
+            {
+                title: 'Figma',
+                description: 'Able to prototype in Figma with Once UI with unnatural speed.',
+                images: [
+                    { src: '/images/projects/project-01/cover-02.jpg', alt: 'Figma Project 1', width: 16, height: 9 },
+                    { src: '/images/projects/project-01/cover-03.jpg', alt: 'Figma Project 2', width: 16, height: 9 }
+                ]
+            },
+            {
+                title: 'Next.js',
+                description: 'Building next gen apps with Next.js + Once UI + Supabase.',
+                images: [
+                    { src: '/images/projects/project-01/cover-04.jpg', alt: 'Next.js Project', width: 16, height: 9 }
+                ]
+            }
+        ]
+    },
+    cv: {
+        display: true,
+        title: 'CV',
+        images: [
+            { src: '/images/Karan.jpeg', alt: 'CV - Karan', width: 16, height: 9 }
+        ]
+    }
+}
+
+const blog = {
+    label: 'Blog',
+    title: 'Writing about Web 3, Gen AI, Design and Jugaad...',
+    description: `Read what ${person.name} has been up to recently`
+    // Create new blog posts by adding a new .mdx file to app/blog/posts
+    // All posts will be listed on the /blog route
+}
+
+const work = {
+    label: 'Work',
+    title: 'My projects',
+    description: `Design and dev projects by ${person.name}`
+    // Create new project pages by adding a new .mdx file to app/blog/posts
+    // All projects will be listed on the /home and /work routes
+}
+
+const gallery = {
+    label: 'Gallery',
+    title: 'My photo gallery',
+    description: `A photo collection by ${person.name}`,
+    // Images from https://pexels.com
+    images: [
+        // Logos
+        {
+            src: '/images/projects/project-01/Sted Space Logo.png',
+            alt: 'Sted Space Logo',
+            orientation: 'horizontal',
+            category: 'logos'
+        },
+        {
+            src: '/images/projects/project-01/Nisa Logo Full copy.png',
+            alt: 'Nisa Logo',
+            orientation: 'horizontal',
+            category: 'logos'
+        },
+        // Branding
+        {
+            src: '/images/projects/project-01/Arth.Bhumi -1.png',
+            alt: 'Arth Bhumi Branding',
+            orientation: 'horizontal',
+            category: 'branding'
+        },
+        {
+            src: '/images/projects/project-01/Biji Biji.png',
+            alt: 'Biji Biji Branding',
+            orientation: 'horizontal',
+            category: 'branding'
+        },
+        // UX/UI
+        {
+            src: '/images/projects/project-01/Recify Landing Page.png',
+            alt: 'Recify UI Design',
+            orientation: 'horizontal',
+            category: 'uxui'
+        },
+        {
+            src: '/images/projects/project-01/GitMatch.png',
+            alt: 'GitMatch UI',
+            orientation: 'horizontal',
+            category: 'uxui'
+        },
+        // Photos
+        {
+            src: '/images/gallery/img-01.jpg',
+            alt: 'Gallery Photo 1',
+            orientation: 'vertical',
+            category: 'photos'
+        },
+        {
+            src: '/images/gallery/img-02.jpg',
+            alt: 'Gallery Photo 2',
+            orientation: 'horizontal',
+            category: 'photos'
+        },
+        // Posters
+        {
+            src: '/images/projects/project-01/web 3 letters.png',
+            alt: 'Web3 Poster',
+            orientation: 'vertical',
+            category: 'posters'
+        },
+        {
+            src: '/images/projects/project-01/1EthSkies - web 3.png',
+            alt: 'EthSkies Poster',
+            orientation: 'vertical',
+            category: 'posters'
+        },
+        // AI Artworks
+        {
+            src: '/images/projects/project-01/Cave Life.png',
+            alt: 'AI Generated Cave Life',
+            orientation: 'horizontal',
+            category: 'ai-artworks'
+        },
+        {
+            src: '/images/projects/project-01/Add on Prop.png',
+            alt: 'AI Generated Prop',
+            orientation: 'horizontal',
+            category: 'ai-artworks'
+        },
+        {
+            src: '/images/gallery/img-03.jpg',
+            alt: 'Gallery Photo 3',
+            orientation: 'vertical',
+            category: 'photos'
+        },
+        // Videos
+        {
+            src: '/images/projects/project-01/video-01.mp4',
+            alt: 'Project Video',
+            orientation: 'horizontal',
+            category: 'videos',
+            type: 'video'
+        },
+        {
+            src: '/images/gallery/img-04.jpg',
+            alt: 'Gallery Photo 4',
+            orientation: 'horizontal',
+            category: 'photos'
+        },
+        {
+            src: '/images/gallery/img-05.jpg',
+            alt: 'Gallery Photo 5',
+            orientation: 'horizontal',
+            category: 'photos'
+        },
+        // More Branding
+        {
+            src: '/images/projects/project-01/Botclub.jpg',
+            alt: 'Botclub Branding',
+            orientation: 'horizontal',
+            category: 'branding'
+        },
+        {
+            src: '/images/projects/project-01/Decubes.png',
+            alt: 'Decubes Branding',
+            orientation: 'horizontal',
+            category: 'branding'
+        },
+        // More UX/UI
+        {
+            src: '/images/projects/project-01/Enblick.png',
+            alt: 'Enblick UI Design',
+            orientation: 'horizontal',
+            category: 'uxui'
+        },
+        {
+            src: '/images/projects/project-01/Griffex.png',
+            alt: 'Griffex UI Design',
+            orientation: 'horizontal',
+            category: 'uxui'
+        },
+        // More Logos
+        {
+            src: '/images/projects/project-01/Lenspost.png',
+            alt: 'Lenspost Logo',
+            orientation: 'horizontal',
+            category: 'logos'
+        },
+        {
+            src: '/images/projects/project-01/Richmint.png',
+            alt: 'Richmint Logo',
+            orientation: 'horizontal',
+            category: 'logos'
+        },
+        // More AI Artworks
+        {
+            src: '/images/projects/project-01/Role coin.png',
+            alt: 'AI Generated Role Coin',
+            orientation: 'horizontal',
+            category: 'ai-artworks'
+        },
+        {
+            src: '/images/projects/project-01/Steamrole.png',
+            alt: 'AI Generated Steam Role',
+            orientation: 'horizontal',
+            category: 'ai-artworks'
+        },
+        // More Posters
+        {
+            src: '/images/projects/project-01/Student Chakra.png',
+            alt: 'Student Chakra Poster',
+            orientation: 'horizontal',
+            category: 'posters'
+        },
+    ]
+}
+
+export { person, social, newsletter, home, about, blog, work, gallery };

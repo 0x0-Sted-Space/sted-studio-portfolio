@@ -1,0 +1,81 @@
+{
+    "person": {
+        "role": "Product Studio"
+    },
+    "newsletter": {
+        "title": "Subscribe to {firstName}'s Newsletter",
+        "description": "We occasionally write about design, technology, and share thoughts on the intersection of creativity and engineering for Sustainable Development",
+        "button": "Sign up"
+    },
+    "home": {
+        "label": "Home",
+        "title": "{name}'s Portfolio",
+        "description": "Portfolio website showcasing our work as a {role}",
+        "headline": "Holaaa!",
+        "subline": "Hey I'm Shiva, an education engineer at Enhance42. I run this small studio which can help people with their 0-1 Journey. Freelancers, Startups or wannapreneurs, drop us a line. See you on the other side."
+    },
+    "about": {
+        "label": "About",
+        "title": "About Us",
+        "description": "Meet {name}, {role} from {location}",
+        "intro": {
+            "title": "Introduction",
+            "description": "Sted Studio is a Vizag-based Product Studio with a passion for transforming complex challenges into simple, elegant design solutions. Our work spans digital interfaces, interactive experiences, and the convergence of design and technology for Sustainable Development."
+        },
+        "work": {
+            "title": "Work Experience",
+            "experiences": {
+                "Enhance42": {
+                    "timeframe": "2019 - Present",
+                    "role": "Jr Education Engineer",
+                    "achievements": "Redesigning how current day engineers build, ship & scale; Spearheaded the integration of AI tools into design & dev workflows, enabling engineers to iterate 50% faster on ideas."
+                },
+                "Almora": {
+                    "timeframe": "2017 - 2018",
+                    "role": "Entrepreneur In Residence",
+                    "achievements": "At an investment bank which handled about 50BTC Fund, we brewed about 5 interesting tokens Gladage, Griffex.co, Decubes, Enblick, ThecryptoUpdates & many more interesting things in web 3 space.; Led a cross-functional teams to launch a new product lines, with couple of projects getting $3MN underwriting."
+                }
+            }
+        },
+        "studies": {
+            "title": "Studies",
+            "institutions": {
+                "University of Life": {
+                    "description": "Civil Engineer by profession, sustainable architect by passion. Homegrown innovators by vizag startups, enhance42, vizag volunteers."
+                },
+                "Build the Future": {
+                    "description": "Studied online marketing and personal branding."
+                }
+            }
+        },
+        "technical": {
+            "title": "Technical skills",
+            "skills": {
+                "Figma": {
+                    "description": "Able to prototype in Figma with Once UI with unnatural speed."
+                },
+                "Nextjs": {
+                    "description": "Building next gen apps with Next.js + Once UI + Supabase."
+                }
+            }
+        }
+    },
+    "blog": {
+        "label": "Blog",
+        "title": "Writing about Web 3, Gen AI, Design and Jugaad...",
+        "description": "Read what {name} has been up to recently"
+    },
+    "work": {
+        "label": "Work",
+        "title": "My projects",
+        "description": "Design and dev projects by {name}"
+    },
+    "gallery": {
+        "label": "Gallery",
+        "title": "My photo gallery",
+        "description": "A photo collection by {name}"
+    },
+    "projectCard": {
+        "label": "Read Case Study"
+    }
+}
