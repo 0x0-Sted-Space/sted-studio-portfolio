@@ -64,7 +64,7 @@ export default function WorldMapOutline({
 
   // Convert TopoJSON -> GeoJSON features once
   const countries = useMemo(() => {
-    const geo = feature(world110m as any, (world110m as any).objects.countries);
+    const geo = feature(world110m as any, (world110m as any).objects.countries) as any;
     // Filter out Antarctica (it's usually the first feature with name "Antarctica")
     return geo.features.filter((f: any) => f.properties?.name !== "Antarctica");
   }, []);
