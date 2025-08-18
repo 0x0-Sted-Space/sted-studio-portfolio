@@ -1,32 +1,5 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "regions": ["iad1"],
-  "functions": {
-    "src/pages/api/*.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ]
-}
+[33m82616fd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Restructure Products & Services: Add Web2/Web3 sections with updated pricing and new service blocks
+[33m44188a4[m Update Products & Services with comprehensive Web3 and blockchain service offerings based on Qlindo.pdf - Added 6 service categories with detailed features and pricing
+[33m98949c4[m Fix Vercel build error - disable optimizeCss to resolve critters dependency issue
+[33m08cab36[m world
+[33m94c2a6d[m Fix TypeScript config errors and Vercel runtime configuration

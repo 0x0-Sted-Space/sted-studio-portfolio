@@ -185,7 +185,6 @@ function Banner({
     <Flex
       direction="column"
       gap="l"
-      textAlign="center"
       paddingY="xl"
       paddingX="xl"
       background={isDark ? "neutral-strong" : "brand-weak"}
@@ -198,7 +197,7 @@ function Banner({
       <Flex direction="column" gap="m">
         <Heading
           variant="heading-strong-l"
-          onBackground={isDark ? "neutral-on-strong" : "brand-on-weak"}
+          onBackground={isDark ? "neutral-weak" : "brand-strong"}
         >
           {title}
         </Heading>
@@ -219,7 +218,7 @@ function Banner({
       >
         <Flex
           background={isDark ? "accent-strong" : "brand-strong"}
-          onBackground={isDark ? "accent-on-strong" : "brand-on-strong"}
+          onBackground={isDark ? "accent-weak" : "brand-weak"}
           padding="l"
           paddingX="xl"
           radius="l"
