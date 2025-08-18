@@ -163,6 +163,149 @@ const work = {
     // All projects will be listed on the /home and /work routes
 }
 
+const products = {
+    label: 'Products',
+    title: 'Our Products',
+    description: 'Innovative solutions crafted by Sted Studio',
+    headline: 'Building Tomorrow\'s Solutions',
+    subline: 'From Web3 innovations to AI-powered tools, we create products that solve real-world problems and drive sustainable development.',
+    items: [
+        {
+            title: 'EthSkies',
+            description: 'A decentralized platform for sustainable aviation solutions',
+            image: '/images/projects/project-01/1EthSkies - web 3.png',
+            status: 'In Development',
+            tags: ['Web3', 'Sustainability', 'Aviation']
+        },
+        {
+            title: 'Griffex.co',
+            description: 'Advanced trading platform with AI-powered analytics',
+            image: '/images/projects/project-01/Griffex.png',
+            status: 'Beta',
+            tags: ['FinTech', 'AI', 'Trading']
+        },
+        {
+            title: 'GitMatch',
+            description: 'Smart developer matching platform for open source projects',
+            image: '/images/projects/project-01/GitMatch.png',
+            status: 'Live',
+            tags: ['Developer Tools', 'Open Source', 'Collaboration']
+        },
+        {
+            title: 'Recify',
+            description: 'Automated code review and optimization platform',
+            image: '/images/projects/project-01/Recify Landing Page.png',
+            status: 'Coming Soon',
+            tags: ['DevTools', 'AI', 'Code Quality']
+        }
+    ]
+}
+
+const services = {
+    label: 'Services',
+    title: 'Our Services',
+    description: 'Comprehensive solutions for your digital transformation journey',
+    headline: 'From Idea to Impact',
+    subline: 'We help creators, freelancers, startups, and wannapreneurs navigate their 0-1 journey with expert guidance and cutting-edge solutions.',
+    offerings: [
+        {
+            title: 'Concept Creation',
+            description: 'Strategic foundation and research for your project',
+            icon: 'lightbulb',
+            features: [
+                'Market Research',
+                'Mapping Purpose',
+                'Problem Definition',
+                'Solution Architecture',
+                'Ecosystem Design',
+                'Technology Architecture',
+                'Regulatory Landscape',
+                'Competitor Analysis'
+            ],
+            pricing: '$30,000-$50,000'
+        },
+        {
+            title: 'Tokenomics',
+            description: 'Complete token economy design and implementation',
+            icon: 'coins',
+            features: [
+                'Mapping Economics',
+                'Supply, Demand & Price Dynamics',
+                'Best Multi-token Framework',
+                'Utility Tokens & Security Tokens',
+                'Liquidity Breakdowns for Optimal Flows',
+                'Governance',
+                'Distribution Mechanisms'
+            ],
+            pricing: '$45,000-$60,000'
+        },
+        {
+            title: 'Branding',
+            description: 'Complete brand identity and visual design system',
+            icon: 'palette',
+            features: [
+                'Brand Strategy',
+                'Brand Identity',
+                'Branding Guidelines',
+                'Messaging Framework',
+                'Content Strategy',
+                'Brand Audits',
+                'Visual Identity Design',
+                'Branding Kit'
+            ],
+            pricing: '$35,000-$45,000'
+        },
+        {
+            title: 'PR & Marketing',
+            description: 'Comprehensive marketing and public relations strategy',
+            icon: 'megaphone',
+            features: [
+                'Media Kit',
+                'Social Media Content',
+                'Media Relations (Press Releases, Interviews)',
+                'Content Marketing (Newsletters, Collabs)',
+                'Influencer Marketing',
+                'Email Marketing',
+                'Ad Assets',
+                'Paid Advertising',
+                'Analytics & Reporting'
+            ],
+            pricing: '$50,000-$xxxxx'
+        },
+        {
+            title: 'Community',
+            description: 'Community building and engagement strategies',
+            icon: 'users',
+            features: [
+                'Community Guidelines',
+                'Management Plan',
+                'Engagement Plan',
+                'Rewards Program',
+                'Governance Framework',
+                'Monitory & Moderation',
+                'Analytics & Reporting'
+            ],
+            pricing: '$50,000-$xxxxx'
+        },
+        {
+            title: 'Legal',
+            description: 'Legal framework and compliance solutions',
+            icon: 'scale',
+            features: [
+                'Regulatory',
+                'Legal Framework',
+                'Smart Contracts',
+                'IP Protection',
+                'Privacy Policy',
+                'Data Protection',
+                'Terms & Conditions',
+                'Legal Opinion'
+            ],
+            pricing: '$50,000-$xxxxx'
+        }
+    ]
+}
+
 const gallery = {
     label: 'Gallery',
     title: 'My photo gallery',
@@ -335,4 +478,4 @@ const gallery = {
     ]
 }
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, products, services, gallery };

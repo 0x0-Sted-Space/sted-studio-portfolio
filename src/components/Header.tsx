@@ -42,7 +42,7 @@ export const Header = () => {
   }
 
   const t = useTranslations();
-  const { person, home, about, blog, work, gallery } = renderContent(t);
+  const { person, home, about, blog, work, gallery, products } = renderContent(t);
 
   return (
     <>
@@ -128,6 +128,17 @@ export const Header = () => {
                 >
                   <Flex paddingX="2" hide="s">
                     {blog.label}
+                  </Flex>
+                </ToggleButton>
+              )}
+              {routes["/products"] && (
+                <ToggleButton
+                  prefixIcon="package"
+                  href={`/${params?.locale}/products`}
+                  selected={pathname.startsWith("/products")}
+                >
+                  <Flex paddingX="2" hide="s">
+                    Products & Services
                   </Flex>
                 </ToggleButton>
               )}
