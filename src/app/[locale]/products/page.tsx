@@ -82,8 +82,7 @@ function ProductCard({ product }: ProductCardProps) {
       radius="l"
       padding="xl"
       gap="l"
-      style={{ height: "100%", transition: "transform 0.2s ease" }}
-      className="product-card"
+      style={{ height: "100%" }}
     >
       <Flex direction="column" gap="m">
         <Flex justifyContent="space-between" alignItems="flex-start">
@@ -114,12 +113,6 @@ function ProductCard({ product }: ProductCardProps) {
           </Tag>
         ))}
       </Flex>
-
-      <style jsx>{`
-        .product-card:hover {
-          transform: translateY(-2px);
-        }
-      `}</style>
     </Flex>
   );
 }
@@ -134,8 +127,7 @@ function ServiceCard({ service }: ServiceCardProps) {
       radius="l"
       padding="xl"
       gap="l"
-      style={{ height: "100%", transition: "transform 0.2s ease" }}
-      className="service-card"
+      style={{ height: "100%" }}
     >
       <Flex direction="column" gap="m">
         <Flex alignItems="center" gap="m">
@@ -163,7 +155,7 @@ function ServiceCard({ service }: ServiceCardProps) {
       </Flex>
 
       <Flex
-        background="accent-alpha-weak"
+        background="accent-weak"
         padding="m"
         radius="m"
         justifyContent="center"
@@ -172,12 +164,76 @@ function ServiceCard({ service }: ServiceCardProps) {
           {service.pricing}
         </Text>
       </Flex>
+    </Flex>
+  );
+}
 
-      <style jsx>{`
-        .service-card:hover {
-          transform: translateY(-2px);
-        }
-      `}</style>
+function Banner({
+  title,
+  subtitle,
+  ctaText,
+  href,
+  isDark = false,
+}: {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  href: string;
+  isDark?: boolean;
+}) {
+  return (
+    <Flex
+      direction="column"
+      gap="l"
+      textAlign="center"
+      paddingY="xl"
+      paddingX="xl"
+      background={isDark ? "neutral-strong" : "brand-weak"}
+      border="neutral-medium"
+      borderStyle="solid-1"
+      radius="xl"
+      fillWidth
+      style={{ textAlign: "center" }}
+    >
+      <Flex direction="column" gap="m">
+        <Heading
+          variant="heading-strong-l"
+          onBackground={isDark ? "neutral-on-strong" : "brand-on-weak"}
+        >
+          {title}
+        </Heading>
+        <Text
+          variant="body-default-l"
+          onBackground={isDark ? "neutral-medium" : "brand-medium"}
+        >
+          {subtitle}
+        </Text>
+      </Flex>
+
+      <a
+        href={href}
+        style={{
+          textDecoration: "none",
+          alignSelf: "center",
+        }}
+      >
+        <Flex
+          background={isDark ? "accent-strong" : "brand-strong"}
+          onBackground={isDark ? "accent-on-strong" : "brand-on-strong"}
+          padding="l"
+          paddingX="xl"
+          radius="l"
+          gap="xs"
+          alignItems="center"
+          style={{
+            transition: "all 0.2s ease",
+            cursor: "pointer",
+          }}
+        >
+          <Icon name="arrow-right" size="s" />
+          <Text variant="label-default-m">{ctaText}</Text>
+        </Flex>
+      </a>
     </Flex>
   );
 }
@@ -190,7 +246,7 @@ export default async function Products({
   const { locale } = await params;
   unstable_setRequestLocale(locale);
   const t = await getTranslations();
-  const { products, services } = renderContent(t);
+  const { products, web2Services, web3Services } = renderContent(t);
 
   return (
     <Flex
@@ -201,12 +257,17 @@ export default async function Products({
       maxWidth="m"
     >
       {/* Hero Section */}
-      <Flex direction="column" gap="m" textAlign="center" paddingY="l">
+      <Flex
+        direction="column"
+        gap="m"
+        paddingY="l"
+        style={{ textAlign: "center" }}
+      >
         <Heading variant="display-strong-s">Products & Services</Heading>
         <Text
           variant="heading-default-xl"
           onBackground="neutral-medium"
-          maxWidth="l"
+          style={{ maxWidth: "var(--static-space-l)" }}
         >
           Innovative solutions and comprehensive services for your digital
           transformation journey
@@ -215,13 +276,12 @@ export default async function Products({
 
       {/* Products Section */}
       <Flex fillWidth direction="column" gap="xl">
-        <Flex direction="column" gap="m" textAlign="center">
+        <Flex direction="column" gap="m" style={{ textAlign: "center" }}>
           <Heading variant="heading-strong-l">{products.headline}</Heading>
           <Text
             variant="body-default-l"
             onBackground="neutral-medium"
-            maxWidth="l"
-            textAlign="center"
+            style={{ maxWidth: "var(--static-space-l)", textAlign: "center" }}
           >
             {products.subline}
           </Text>
@@ -234,32 +294,73 @@ export default async function Products({
         </Grid>
       </Flex>
 
-      {/* Services Section */}
+      {/* Web2 Services Section */}
       <Flex fillWidth direction="column" gap="xl" paddingY="xl">
-        <Flex direction="column" gap="m" textAlign="center">
-          <Heading variant="heading-strong-l">{services.headline}</Heading>
+        <Flex direction="column" gap="m" style={{ textAlign: "center" }}>
+          <Heading variant="heading-strong-l">{web2Services.headline}</Heading>
           <Text
             variant="body-default-l"
             onBackground="neutral-medium"
-            maxWidth="l"
-            textAlign="center"
+            style={{ maxWidth: "var(--static-space-l)", textAlign: "center" }}
           >
-            {services.subline}
+            {web2Services.subline}
+          </Text>
+          <Text variant="heading-strong-m" onBackground="brand-strong">
+            Web2 Solutions - Indian Market Rates
           </Text>
         </Flex>
 
         <Grid columns="repeat(auto-fit, minmax(300px, 1fr))" gap="l" fillWidth>
-          {services.offerings.map((service: any, index: number) => (
+          {web2Services.offerings.map((service: any, index: number) => (
             <ServiceCard key={index} service={service} />
           ))}
         </Grid>
       </Flex>
 
-      {/* CTA Section */}
+      {/* Zero to One Journey Banner */}
+      <Banner
+        title="Ready for Your Zero to One Journey?"
+        subtitle="Transform your ideas into reality with our comprehensive solutions. Prices start from ₹50,000 INR."
+        ctaText="Start Your Journey"
+        href="mailto:lucky3aeon@yahoo.com"
+      />
+
+      {/* Web3 Services Section */}
+      <Flex fillWidth direction="column" gap="xl" paddingY="xl">
+        <Flex direction="column" gap="m" style={{ textAlign: "center" }}>
+          <Heading variant="heading-strong-l">{web3Services.headline}</Heading>
+          <Text
+            variant="body-default-l"
+            onBackground="neutral-medium"
+            style={{ maxWidth: "var(--static-space-l)", textAlign: "center" }}
+          >
+            {web3Services.subline}
+          </Text>
+          <Text variant="heading-strong-m" onBackground="accent-strong">
+            Web3 Solutions - Global Market Rates
+          </Text>
+        </Flex>
+
+        <Grid columns="repeat(auto-fit, minmax(300px, 1fr))" gap="l" fillWidth>
+          {web3Services.offerings.map((service: any, index: number) => (
+            <ServiceCard key={index} service={service} />
+          ))}
+        </Grid>
+      </Flex>
+
+      {/* Freelance Force Banner */}
+      <Banner
+        title="Hire Our Freelance Force"
+        subtitle="Get things rolling on demand. One workshop for all your technological needs."
+        ctaText="Hire Freelancers"
+        href="mailto:lucky3aeon@yahoo.com"
+        isDark={true}
+      />
+
+      {/* Final CTA Section */}
       <Flex
         direction="column"
         gap="m"
-        textAlign="center"
         paddingY="xl"
         background="surface"
         border="neutral-medium"
@@ -267,31 +368,37 @@ export default async function Products({
         radius="l"
         padding="xl"
         fillWidth
+        style={{ textAlign: "center" }}
       >
         <Heading variant="heading-strong-m">
           Ready to Start Your Project?
         </Heading>
         <Text variant="body-default-m" onBackground="neutral-medium">
-          Whether you need a product built or services to accelerate your
-          business, we're here to help. Let's discuss your vision and bring it
-          to life.
+          Whether you need Web2 or Web3 solutions, products built or services to
+          accelerate your business, we're here to help. Let's discuss your
+          vision and bring it to life.
         </Text>
         <Flex gap="m" justifyContent="center" wrap>
-          <Flex
-            as="a"
+          <a
             href="mailto:lucky3aeon@yahoo.com"
-            background="accent-solid"
-            color="accent-on-solid"
-            padding="m"
-            radius="m"
-            textDecoration="none"
-            gap="xs"
-            alignItems="center"
-            style={{ transition: "all 0.2s ease" }}
+            style={{
+              textDecoration: "none",
+              transition: "all 0.2s ease",
+              borderRadius: "var(--radius-m)",
+            }}
           >
-            <Icon name="email" size="s" />
-            <Text variant="label-default-s">Get in Touch</Text>
-          </Flex>
+            <Flex
+              background="accent-strong"
+              onBackground="accent-strong"
+              padding="m"
+              radius="m"
+              gap="xs"
+              alignItems="center"
+            >
+              <Icon name="email" size="s" />
+              <Text variant="label-default-s">Get in Touch</Text>
+            </Flex>
+          </a>
         </Flex>
       </Flex>
     </Flex>

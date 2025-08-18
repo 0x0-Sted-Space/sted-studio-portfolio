@@ -167,6 +167,360 @@ const createI18nContent = (t) => {
         // All projects will be listed on the /home and /work routes
     }
 
+    const products = {
+        label: 'Products',
+        title: 'Our Products',
+        description: 'Innovative solutions crafted by Sted Studio',
+        headline: 'Building Tomorrow\'s Solutions',
+        subline: 'From Web3 innovations to AI-powered tools, we create products that solve real-world problems and drive sustainable development.',
+        items: [
+            {
+                title: 'EthSkies',
+                description: 'A decentralized platform for sustainable aviation solutions',
+                image: '/images/projects/project-01/1EthSkies - web 3.png',
+                status: 'In Development',
+                tags: ['Web3', 'Sustainability', 'Aviation']
+            },
+            {
+                title: 'Griffex.co',
+                description: 'Advanced trading platform with AI-powered analytics',
+                image: '/images/projects/project-01/Griffex.png',
+                status: 'Beta',
+                tags: ['FinTech', 'AI', 'Trading']
+            },
+            {
+                title: 'Qlindo Platform',
+                description: 'Comprehensive blockchain development framework',
+                image: '/images/projects/project-01/cover-01.jpg',
+                status: 'Coming Soon',
+                tags: ['Blockchain', 'Framework', 'Development']
+            }
+        ]
+    }
+
+    const web2Services = {
+        label: 'Web2 Services',
+        title: 'Web2 Solutions',
+        description: 'Traditional web development and business solutions',
+        headline: 'From Idea to Impact',
+        subline: 'We help creators, freelancers, startups, and wannapreneurs navigate their 0-1 journey with expert guidance and cutting-edge solutions.',
+        offerings: [
+            {
+                title: 'Concept Creation',
+                description: 'Strategic foundation and research for your project',
+                icon: 'lightbulb',
+                features: [
+                    'Market Research',
+                    'Mapping Purpose',
+                    'Problem Definition',
+                    'Solution Architecture',
+                    'Ecosystem Design',
+                    'Technology Architecture',
+                    'Regulatory Landscape',
+                    'Competitor Analysis'
+                ],
+                pricing: '₹2,50,000-₹4,00,000'
+            },
+            {
+                title: 'Branding',
+                description: 'Complete brand identity and visual design system',
+                icon: 'palette',
+                features: [
+                    'Brand Strategy',
+                    'Brand Identity',
+                    'Branding Guidelines',
+                    'Messaging Framework',
+                    'Content Strategy',
+                    'Brand Audits',
+                    'Visual Identity Design',
+                    'Branding Kit'
+                ],
+                pricing: '₹2,80,000-₹3,60,000'
+            },
+            {
+                title: 'PR & Marketing',
+                description: 'Comprehensive marketing and public relations strategy',
+                icon: 'megaphone',
+                features: [
+                    'Media Kit',
+                    'Social Media Content',
+                    'Media Relations (Press Releases, Interviews)',
+                    'Content Marketing (Newsletters, Collabs)',
+                    'Influencer Marketing',
+                    'Email Marketing',
+                    'Ad Assets',
+                    'Paid Advertising',
+                    'Analytics & Reporting'
+                ],
+                pricing: '₹4,00,000-₹8,00,000'
+            },
+            {
+                title: 'System Setups',
+                description: 'Complete technical infrastructure and system configuration',
+                icon: 'server',
+                features: [
+                    'Cloud Infrastructure Setup',
+                    'Database Configuration',
+                    'CI/CD Pipeline Setup',
+                    'Security Implementation',
+                    'Performance Optimization',
+                    'Monitoring & Analytics',
+                    'Backup & Recovery',
+                    'Scalability Planning'
+                ],
+                pricing: '₹1,50,000-₹3,00,000'
+            },
+            {
+                title: 'Content',
+                description: 'Strategic content creation and management solutions',
+                icon: 'document',
+                features: [
+                    'Content Strategy',
+                    'Copywriting',
+                    'Blog Writing',
+                    'Social Media Content',
+                    'Video Scripts',
+                    'Email Campaigns',
+                    'SEO Content',
+                    'Content Calendar'
+                ],
+                pricing: '₹1,00,000-₹2,50,000'
+            },
+            {
+                title: 'Design & Development',
+                description: 'End-to-end design and development services',
+                icon: 'code',
+                features: [
+                    'UI/UX Design',
+                    'Frontend Development',
+                    'Backend Development',
+                    'Mobile App Development',
+                    'API Development',
+                    'Database Design',
+                    'Testing & QA',
+                    'Deployment & Maintenance'
+                ],
+                pricing: '₹5,00,000-₹15,00,000'
+            },
+            {
+                title: 'Agentic AI',
+                description: 'AI-powered automation and intelligent systems',
+                icon: 'robot',
+                features: [
+                    'AI Strategy & Planning',
+                    'Custom AI Model Development',
+                    'Chatbot Development',
+                    'Process Automation',
+                    'Data Analysis & Insights',
+                    'Machine Learning Integration',
+                    'AI Training & Fine-tuning',
+                    'AI Performance Monitoring'
+                ],
+                pricing: '₹3,00,000-₹8,00,000'
+            },
+            {
+                title: 'Community',
+                description: 'Community building and engagement strategies',
+                icon: 'users',
+                features: [
+                    'Community Guidelines',
+                    'Management Plan',
+                    'Engagement Plan',
+                    'Rewards Program',
+                    'Governance Framework',
+                    'Monitoring & Moderation',
+                    'Analytics & Reporting'
+                ],
+                pricing: '₹4,00,000-₹6,00,000'
+            },
+            {
+                title: 'Legal',
+                description: 'Comprehensive legal framework and compliance solutions',
+                icon: 'scale',
+                features: [
+                    'Regulatory Compliance',
+                    'Legal Framework',
+                    'Contract Drafting',
+                    'IP Protection',
+                    'Privacy Policy',
+                    'Data Protection',
+                    'Terms & Conditions',
+                    'Legal Opinion Letter'
+                ],
+                pricing: '₹4,00,000-₹6,00,000'
+            }
+        ]
+    }
+
+    const web3Services = {
+        label: 'Web3 Services',
+        title: 'Web3 Solutions',
+        description: 'Blockchain and decentralized technology solutions',
+        headline: 'From Idea to Impact',
+        subline: 'We help creators, freelancers, startups, and wannapreneurs navigate their 0-1 journey with expert guidance and cutting-edge Web3 solutions.',
+        offerings: [
+            {
+                title: 'Concept Creation',
+                description: 'Strategic foundation and research for your Web3 project',
+                icon: 'lightbulb',
+                features: [
+                    'Market Research',
+                    'Mapping Purpose',
+                    'Problem Definition',
+                    'Solution Architecture',
+                    'Ecosystem Design',
+                    'Technology Architecture',
+                    'Regulatory Landscape',
+                    'Competitor Analysis'
+                ],
+                pricing: '$75,000-$125,000'
+            },
+            {
+                title: 'Tokenomics',
+                description: 'Complete token economy design and implementation',
+                icon: 'coins',
+                features: [
+                    'Mapping Economics',
+                    'Supply, Demand & Price Dynamics',
+                    'Best Multi-token Framework',
+                    'Utility Tokens & Security Tokens',
+                    'Liquidity Breakdowns for Optimal Flows',
+                    'Governance',
+                    'Distribution Mechanisms'
+                ],
+                pricing: '$100,000-$150,000'
+            },
+            {
+                title: 'Branding',
+                description: 'Complete brand identity and visual design system for Web3',
+                icon: 'palette',
+                features: [
+                    'Brand Strategy',
+                    'Brand Identity',
+                    'Branding Guidelines',
+                    'Messaging Framework',
+                    'Content Strategy',
+                    'Brand Audits',
+                    'Visual Identity Design',
+                    'Branding Kit'
+                ],
+                pricing: '$85,000-$110,000'
+            },
+            {
+                title: 'PR & Marketing',
+                description: 'Comprehensive Web3 marketing and public relations strategy',
+                icon: 'megaphone',
+                features: [
+                    'Media Kit',
+                    'Social Media Content',
+                    'Media Relations (Press Releases, Interviews)',
+                    'Content Marketing (Newsletters, Collabs)',
+                    'Influencer Marketing',
+                    'Email Marketing',
+                    'Ad Assets',
+                    'Paid Advertising',
+                    'Analytics & Reporting'
+                ],
+                pricing: '$120,000-$200,000'
+            },
+            {
+                title: 'System Setups',
+                description: 'Complete blockchain infrastructure and system configuration',
+                icon: 'server',
+                features: [
+                    'Blockchain Infrastructure Setup',
+                    'Smart Contract Deployment',
+                    'DApp Configuration',
+                    'Security Implementation',
+                    'Performance Optimization',
+                    'Monitoring & Analytics',
+                    'Backup & Recovery',
+                    'Scalability Planning'
+                ],
+                pricing: '$60,000-$100,000'
+            },
+            {
+                title: 'Content',
+                description: 'Strategic Web3 content creation and management solutions',
+                icon: 'document',
+                features: [
+                    'Content Strategy',
+                    'Technical Writing',
+                    'Whitepaper Creation',
+                    'Social Media Content',
+                    'Video Scripts',
+                    'Email Campaigns',
+                    'SEO Content',
+                    'Content Calendar'
+                ],
+                pricing: '$40,000-$75,000'
+            },
+            {
+                title: 'Design & Development',
+                description: 'End-to-end Web3 design and development services',
+                icon: 'code',
+                features: [
+                    'DApp UI/UX Design',
+                    'Smart Contract Development',
+                    'Frontend Development',
+                    'Backend Development',
+                    'Mobile DApp Development',
+                    'API Development',
+                    'Testing & Auditing',
+                    'Deployment & Maintenance'
+                ],
+                pricing: '$150,000-$400,000'
+            },
+            {
+                title: 'Agentic AI',
+                description: 'AI-powered automation and intelligent Web3 systems',
+                icon: 'robot',
+                features: [
+                    'AI Strategy & Planning',
+                    'Custom AI Model Development',
+                    'AI-powered DApps',
+                    'Process Automation',
+                    'Data Analysis & Insights',
+                    'Machine Learning Integration',
+                    'AI Training & Fine-tuning',
+                    'AI Performance Monitoring'
+                ],
+                pricing: '$80,000-$180,000'
+            },
+            {
+                title: 'Community',
+                description: 'Web3 community building and engagement strategies',
+                icon: 'users',
+                features: [
+                    'Community Guidelines',
+                    'Management Plan',
+                    'Engagement Plan',
+                    'Rewards Program',
+                    'DAO Governance Framework',
+                    'Monitoring & Moderation',
+                    'Analytics & Reporting'
+                ],
+                pricing: '$100,000-$150,000'
+            },
+            {
+                title: 'Legal',
+                description: 'Comprehensive Web3 legal framework and compliance solutions',
+                icon: 'scale',
+                features: [
+                    'Regulatory Compliance',
+                    'Legal Framework',
+                    'Smart Contract Audit',
+                    'IP Protection',
+                    'Privacy Policy',
+                    'Data Protection',
+                    'Terms & Conditions',
+                    'Legal Opinion Letter'
+                ],
+                pricing: '$120,000-$180,000'
+            }
+        ]
+    }
+
     const gallery = {
         label: t("gallery.label"),
         title: t("gallery.title"),
@@ -253,6 +607,9 @@ const createI18nContent = (t) => {
         about,
         blog,
         work,
+        products,
+        web2Services,
+        web3Services,
         gallery
     }
 };
