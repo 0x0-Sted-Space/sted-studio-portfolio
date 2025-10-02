@@ -1,0 +1,85 @@
+.galleryContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--surface-default);
+  padding-top: 80px; // Account for main header height
+}
+
+.navigationBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 80px; // Position below the main header (which is 80px high)
+  z-index: 8; // Lower than main header (z-index: 9)
+  width: 100%;
+  min-height: 72px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.navButton {
+  flex: 0 0 auto;
+  min-width: 140px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  text-align: center;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.sectionsContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-sunken);
+  overflow-y: auto;
+}
+
+.sectionWrapper {
+  width: 100%;
+  padding: 2rem;
+  min-height: auto;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .galleryContainer {
+    padding-top: 60px; // Smaller padding on mobile
+  }
+  
+  .navigationBar {
+    top: 60px; // Adjust for mobile header height
+    padding: 0.75rem 1rem;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryContainer {
+    padding-top: 50px;
+  }
+  
+  .navigationBar {
+    top: 50px;
+    padding: 0.5rem 0.75rem;
+    min-height: 50px;
+  }
+}

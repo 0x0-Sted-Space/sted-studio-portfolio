@@ -1,0 +1,10 @@
+.headline {
+  text-align: left;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .headline {
+    text-align: center;
+  }
+} 

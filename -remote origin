@@ -1,0 +1,5 @@
+[33m10d87e0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Clear cache and fix dependencies - update package-lock.json after npm audit fix
+[33m8b8a5bb[m Fix deployment configuration and update portfolio - resolve Vercel deployment issues
+[33mf846258[m URGENT: Force Vercel to deploy latest fixes - commit a6a728b has deployment errors
+[33m94a48d1[m Add minimal vercel.json to ensure proper Next.js deployment
+[33m44c6d7d[m Force Vercel redeploy - trigger latest commit deployment

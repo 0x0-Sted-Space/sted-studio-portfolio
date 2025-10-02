@@ -1,0 +1,263 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--surface-default);
+}
+
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  min-height: 72px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navigation-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-button {
+  flex: 0 0 auto;
+  min-width: 140px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.nav-button:hover {
+  transform: translateY(-1px);
+}
+
+.sections-container {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background: var(--surface-sunken);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sections-container::-webkit-scrollbar {
+  display: none;
+}
+
+.section-wrapper {
+  flex: 0 0 100%;
+  width: 100%;
+  height: calc(100vh - 72px);
+  scroll-snap-align: start;
+  overflow-y: auto;
+  padding: 2rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.section-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gallery Section Styles */
+.gallery-section {
+  padding: var(--responsive-space-xl) 0;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--responsive-space-xl);
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--content-default), var(--content-subtle));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--responsive-space-m);
+  padding: 0 var(--responsive-space-m);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.bento-item {
+  position: relative;
+  border-radius: var(--border-radius-m);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.bento-item::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.bento-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.bento-item:hover .card-content {
+  opacity: 1;
+}
+
+.bento-item:hover .card-controls {
+  opacity: 1;
+}
+
+.bento-item:hover .bento-image {
+  transform: scale(1.1);
+}
+
+.bento-item.large {
+  grid-column: span 6;
+  grid-row: span 6;
+}
+
+.bento-item.tall {
+  grid-column: span 3;
+  grid-row: span 6;
+}
+
+.bento-item.tall::before {
+  padding-top: 200%;
+}
+
+.bento-item.wide {
+  grid-column: span 6;
+  grid-row: span 3;
+}
+
+.bento-item.wide::before {
+  padding-top: 56.25%;
+}
+
+.bento-item.small {
+  grid-column: span 3;
+  grid-row: span 3;
+}
+
+.bento-item.medium {
+  grid-column: span 4;
+  grid-row: span 4;
+}
+
+.bento-item.medium::before {
+  padding-top: 75%;
+}
+
+.bento-item.extra-wide {
+  grid-column: span 8;
+  grid-row: span 4;
+}
+
+.bento-item.extra-wide::before {
+  padding-top: 56.25%;
+}
+
+.card-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-sunken);
+}
+
+.bento-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card-controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-button {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: var(--border-radius-s);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    transparent 100%
+  );
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}

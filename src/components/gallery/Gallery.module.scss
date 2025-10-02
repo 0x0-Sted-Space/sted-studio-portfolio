@@ -1,0 +1,271 @@
+.section {
+  padding: var(--responsive-space-xl) 0;
+  width: 100%;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: var(--responsive-space-xl);
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--content-default), var(--content-subtle));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Masonry Grid Styles
+.masonryGrid {
+  display: -webkit-box; // Fallback for older browsers
+  display: -ms-flexbox; // Fallback for older browsers
+  display: flex;
+  margin-left: calc(var(--responsive-space-m) * -1); // Gutter size offset
+  width: auto;
+}
+
+.masonryGridColumn {
+  padding-left: var(--responsive-space-m); // Gutter size
+  background-clip: padding-box;
+}
+
+.masonryItem {
+  position: relative;
+  border-radius: var(--border-radius-m);
+  overflow: hidden;
+  margin-bottom: var(--responsive-space-m);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  break-inside: avoid; // Prevent breaking inside the item
+  display: block;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+
+    .cardContent {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cardControls {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .masonryImage {
+      transform: scale(1.05);
+    }
+
+    .imageIndicators {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
+
+.cardCarousel {
+  position: relative;
+  width: 100%;
+  background: var(--surface-sunken);
+  border-radius: var(--border-radius-m);
+}
+
+.transitionOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  border-radius: var(--border-radius-m);
+}
+
+.transitionSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.masonryImage {
+  border-radius: var(--border-radius-m);
+  display: block;
+  will-change: transform, opacity;
+}
+
+.masonryVideo {
+  border-radius: var(--border-radius-m);
+  display: block;
+  will-change: transform, opacity;
+  background: var(--surface-sunken);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.cardControls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 4;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(10px);
+}
+
+.carouselButton {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  border-radius: var(--border-radius-s);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    transparent 100%
+  );
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .cardDescription {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .imageCount {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+  }
+}
+
+// Image indicators for carousel
+.imageIndicators {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &.active {
+    background: white;
+    transform: scale(1.4);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .masonryGrid {
+    margin-left: calc(var(--responsive-space-s) * -1);
+  }
+  
+  .masonryGridColumn {
+    padding-left: var(--responsive-space-s);
+  }
+  
+  .masonryItem {
+    margin-bottom: var(--responsive-space-s);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--responsive-space-l) 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: var(--responsive-space-l);
+  }
+  
+  .cardContent {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .masonryGrid {
+    margin-left: calc(var(--responsive-space-xs) * -1);
+  }
+  
+  .masonryGridColumn {
+    padding-left: var(--responsive-space-xs);
+  }
+  
+  .masonryItem {
+    margin-bottom: var(--responsive-space-xs);
+  }
+}

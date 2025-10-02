@@ -1,0 +1,59 @@
+.hover {
+    transition: var(--transition-micro-medium);
+
+    &:hover {
+        transform: translateX(var(--static-space-8));
+
+        .indicator {
+            transform: rotate(0);
+        }
+    }
+}
+
+.indicator {
+    transform: rotate(-90deg);
+    left: -2rem;
+    transition: var(--transition-micro-medium);
+}
+
+.projectsResponsive {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0 2rem 2.5rem 2rem;
+}
+
+@media (max-width: 600px) {
+  .projectsResponsive {
+    padding: 0 0.5rem 1.5rem 0.5rem;
+    gap: 1.2rem;
+  }
+  .projectsResponsive > * {
+    font-size: 1rem !important;
+  }
+}
+
+.projectCardResponsive {
+  width: 100%;
+  background: none;
+  border-radius: 1.2rem;
+  box-shadow: none;
+  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .projectCardResponsive {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+  }
+  .projectCardResponsive img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .projectCardResponsive h2, .projectCardResponsive h3, .projectCardResponsive h4 {
+    font-size: 1.1rem !important;
+  }
+  .projectCardResponsive p, .projectCardResponsive span, .projectCardResponsive div {
+    font-size: 0.98rem !important;
+  }
+}

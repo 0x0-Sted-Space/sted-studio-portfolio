@@ -1,0 +1,7 @@
+{
+  "protected": [
+    "src/components/Header.tsx",
+    "src/components/Header.module.scss",
+    "src/app/[locale]/layout.tsx"
+  ]
+} 
