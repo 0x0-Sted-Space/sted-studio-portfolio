@@ -26,7 +26,7 @@ export function Clients() {
     },
     {
       name: "Smacoteq",
-      src: "/images/projects/project-01/smacoteq.png",
+      src: "/images/projects/project-01/Smacoteq.png",
       alt: "Smacoteq logo",
     },
   ];

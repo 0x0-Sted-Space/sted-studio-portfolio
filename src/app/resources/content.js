@@ -114,7 +114,7 @@ const about = {
         institutions: [
             { name: 'University of Life', description: 'Civil Engineer by profession, sustainable architect by passion. Homegrown innovators by vizag startups, enhance42, vizag volunteers.' },
             { name: 'Internet University', description: 'From wine making to content creation, from idea to product.' },
-            { name: 'E42 University', description: 'From 0-1 Journey of becoming a developer' }
+            { name: 'E42 University', description: 'From 0-1 Journey of becoming a developer. Apprenticeship under Rohini Kumar Barla as Junior Education Engineer.' }
         ]
     },
     technical: {
