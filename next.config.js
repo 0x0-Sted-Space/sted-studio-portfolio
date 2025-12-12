@@ -26,6 +26,8 @@ const nextConfig = {
     // optimizeCss disabled due to critters dependency issue on Vercel
     // optimizeCss: true,
   },
+  // Enable standalone output for Docker deployment
+  output: 'standalone',
 };
 
 module.exports = withNextIntl(withMDX(nextConfig));
