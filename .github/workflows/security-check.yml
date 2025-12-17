@@ -1,0 +1,83 @@
+name: Security Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check for exposed secrets in markdown files
+        run: |
+          echo "Scanning markdown files for potential secrets..."
+          
+          # Check for common secret patterns in markdown files
+          if grep -r -E "(NEXT_PUBLIC_STACK_PROJECT_ID|STACK_SECRET_SERVER_KEY|NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY)=[^y][^o][^u][^r]" *.md 2>/dev/null; then
+            echo "❌ ERROR: Potential secrets found in markdown files!"
+            echo "Markdown files should only contain placeholder values."
+            exit 1
+          fi
+          
+          # Check for API key patterns
+          if grep -r -E "(sk_live_|pk_live_|api_key_|secret_key_)[a-zA-Z0-9]{20,}" *.md 2>/dev/null; then
+            echo "❌ ERROR: Potential API keys found in markdown files!"
+            exit 1
+          fi
+          
+          # Check for JWT tokens
+          if grep -r -E "eyJ[a-zA-Z0-9_-]{20,}\\.eyJ[a-zA-Z0-9_-]{20,}" *.md 2>/dev/null; then
+            echo "❌ ERROR: Potential JWT tokens found in markdown files!"
+            exit 1
+          fi
+          
+          echo "✅ No secrets detected in markdown files"
+
+      - name: Verify .gitignore includes secret files
+        run: |
+          echo "Checking .gitignore configuration..."
+          
+          required_patterns=(
+            ".env.local"
+            ".env.production"
+            ".env"
+          )
+          
+          for pattern in "${required_patterns[@]}"; do
+            if ! grep -q "$pattern" .gitignore; then
+              echo "❌ ERROR: .gitignore missing pattern: $pattern"
+              exit 1
+            fi
+          done
+          
+          echo "✅ .gitignore properly configured"
+
+      - name: Check for committed secret files
+        run: |
+          echo "Checking for accidentally committed secret files..."
+          
+          if [ -f ".env.local" ] || [ -f ".env.production" ]; then
+            echo "❌ ERROR: Secret files found in repository!"
+            echo "These files should never be committed."
+            exit 1
+          fi
+          
+          echo "✅ No secret files committed"
+
+      - name: Validate .env.example
+        run: |
+          echo "Validating .env.example uses placeholders..."
+          
+          # Check that .env.example doesn't contain real-looking values
+          if grep -E "=[a-zA-Z0-9]{32,}" .env.example | grep -v "your_" | grep -v "placeholder" | grep -v "example"; then
+            echo "⚠️  WARNING: .env.example may contain real values instead of placeholders"
+            echo "Please verify all values are placeholders"
+          fi
+          
+          echo "✅ .env.example validation complete"
