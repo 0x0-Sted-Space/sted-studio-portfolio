@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN npm ci --max_old_space_size=2048
 
 # Rebuild the source code only when needed
 FROM base AS builder

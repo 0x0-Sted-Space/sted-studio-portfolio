@@ -13,12 +13,13 @@ export async function GET() {
     }
 
     return NextResponse.json({
-      authenticated: true,
+      message: 'Protected data accessed successfully',
       user: {
         id: user.id,
         email: user.primaryEmail,
         displayName: user.displayName
-      }
+      },
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     console.error('Auth error:', error);

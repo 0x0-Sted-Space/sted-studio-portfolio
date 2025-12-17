@@ -14,7 +14,14 @@
 	"bugs": {
 		"url": "https://github.com/shiva-karan-k/sted-studio-portfolio/issues"
 	},
-	"keywords": ["portfolio", "nextjs", "react", "typescript", "once-ui", "sted-studio"],
+	"keywords": [
+		"portfolio",
+		"nextjs",
+		"react",
+		"typescript",
+		"once-ui",
+		"sted-studio"
+	],
 	"scripts": {
 		"dev": "next dev",
 		"export": "next export",
@@ -27,6 +34,7 @@
 		"@mdx-js/loader": "3.1.0",
 		"@mdx-js/react": "3.1.0",
 		"@next/mdx": "15.3.3",
+		"@stackframe/stack": "^2.8.56",
 		"classnames": "^2.5.1",
 		"cookie": "^1.0.1",
 		"d3": "^7.9.0",
