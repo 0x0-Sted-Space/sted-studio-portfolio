@@ -2,6 +2,7 @@ import { StackServerApp, StackClientApp } from "@stackframe/stack";
 
 export const stackServerApp = new StackServerApp({
   tokenStore: "nextjs-cookie",
+  secretServerKey: process.env.STACK_SECRET_SERVER_KEY!,
   // Add debug mode in development
   ...(process.env.NODE_ENV === 'development' && {
     debug: true
