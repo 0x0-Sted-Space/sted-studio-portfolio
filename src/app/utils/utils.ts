@@ -64,8 +64,10 @@ function getMarkdownData(dir: string) {
     });
 }
 
-export function getPosts(customPath = ['', '', '', '']) {
-    const postsDir = path.join(process.cwd(), ...customPath);
+export function getPosts(customPath: string[] = []) {
+    // Filter out empty strings and join the path
+    const pathSegments = customPath.filter(segment => segment && segment.trim() !== '');
+    const postsDir = pathSegments.length > 0 ? path.join(process.cwd(), ...pathSegments) : process.cwd();
     return getMarkdownData(postsDir);
 }
 

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { Tag } from '@/once-ui/components/Tag';
 import { Button } from '@/once-ui/components/Button';
 import { baseURL, renderContent } from '@/app/resources'
-import { unstable_setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { formatDate } from '@/app/utils/formatDate'
@@ -29,10 +29,10 @@ function addBrAfterParagraphs(html: string) {
 }
 
 export default async function Blog({ params }: BlogParams) {
-	unstable_setRequestLocale(params.locale);
-	const posts = getPosts(['src', 'app', params.locale, 'blog', 'posts']);
-	const post = posts.find((p) => p.slug === params.slug);
-	console.log('BLOG DEBUG', { params, posts, post });
+	const { locale, slug } = await params;
+	setRequestLocale(locale);
+	const posts = getPosts(['src', 'app', locale, 'blog', 'posts']);
+	const post = posts.find((p) => p.slug === slug);
 	if (!post) return notFound();
 	let html = await markdownToHtml(post.content);
 	html = renderWithButton(html);

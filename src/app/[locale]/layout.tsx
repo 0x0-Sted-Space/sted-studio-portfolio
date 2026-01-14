@@ -11,7 +11,7 @@ import { Inter } from 'next/font/google'
 import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import StackAuthProvider from "@/components/StackAuthProvider";
 
 import { routing } from "@/i18n/routing";
@@ -85,7 +85,7 @@ export function generateStaticParams() {
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
 	const { locale } = await params;
-	unstable_setRequestLocale(locale);
+	setRequestLocale(locale);
 	const messages = await getMessages();
 	return (
 		<NextIntlClientProvider messages={messages}>

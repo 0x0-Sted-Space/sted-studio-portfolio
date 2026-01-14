@@ -3,6 +3,7 @@ node_modules
 .git
 *.md
 README.md
+!docs/
 .env.local
 .env.example
 npm-debug.log*

@@ -2,7 +2,10 @@ import { Metadata } from "next";
 import { Flex, Heading, Text, Tag, Grid, Icon } from "@/once-ui/components";
 import { baseURL } from "@/app/resources/config";
 import { renderContent } from "@/app/resources";
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
+// Disable static generation for this page
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -342,7 +345,7 @@ export default async function Products({
   params: { locale: string };
 }) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const t = await getTranslations();
   const { products, web2Services, web3Services } = renderContent(t);
 

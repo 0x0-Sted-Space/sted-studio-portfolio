@@ -5,7 +5,7 @@ import { getPosts, markdownToHtml } from '@/app/utils/utils';
 import { baseURL, routes, renderContent } from '@/app/resources'; 
 import { Mailchimp } from '@/components';
 import { Posts } from '@/components/blog/Posts';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Carousel } from '@/once-ui/components/Carousel';
 import { Tag, SmartLink } from '@/once-ui/components';
 import ProfileTeamSection from '@/components/ProfileTeamSection';
@@ -145,7 +145,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 export default async function Home({ params }: { params: { locale: string } }) {
 	const { locale } = await params;
-	unstable_setRequestLocale(locale);
+	setRequestLocale(locale);
 	const t = await getTranslations();
 	const { home, about, person, newsletter } = renderContent(t);
 	const allProjects = getPosts(['src', 'app', '[locale]', 'work', 'projects', 'en']);

@@ -48,12 +48,15 @@ secrets/
 *.tsbuildinfo
 next-env.d.ts
 
-# deployment and temporary files
+# deployment and temporary files (but not docs/)
 DEPLOYMENT*.md
 *FORCE*.md
 *VERCEL*.md
 *.ps1
 *.bat
+
+# Allow docs folder
+!docs/
 
 # junk files
 er.name
