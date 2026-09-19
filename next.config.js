@@ -34,6 +34,27 @@ const nextConfig = {
   // getPosts() in app/utils/utils.ts reads via a dynamically built path, which
   // Vercel's file tracer can't statically resolve - it falls back to bundling
   // the whole project (474MB of public/ images) into that function's output.
+  outputFileTracingExcludes: {
+    '*': ['./public/**'],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+        ],
+      },
+      {
+        source: '/:path*\\.(jpg|jpeg|png|gif|ico|svg|webp|avif)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = withNextIntl(withMDX(nextConfig));
