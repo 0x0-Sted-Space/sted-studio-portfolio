@@ -31,7 +31,7 @@ function addBrAfterParagraphs(html: string) {
 export default async function Blog({ params }: BlogParams) {
 	const { locale, slug } = await params;
 	setRequestLocale(locale);
-	const posts = getPosts(['src', 'app', locale, 'blog', 'posts']);
+	const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
 	const post = posts.find((p) => p.slug === slug);
 	if (!post) return notFound();
 	let html = await markdownToHtml(post.content);
@@ -103,7 +103,7 @@ export async function generateStaticParams() {
   // Collect all slugs for all locales
   let params = [];
   for (const locale of locales) {
-    const posts = getPosts(['src', 'app', locale, 'blog', 'posts']);
+    const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
     params.push(...posts.map(post => ({ slug: post.slug, locale })));
   }
   return params;

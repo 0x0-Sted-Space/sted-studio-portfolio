@@ -42,7 +42,7 @@ export default async function Blog({ params }: { params: { locale: string } }) {
 	setRequestLocale(locale);
 	const t = await getTranslations();
 	const { person, blog, newsletter } = renderContent(t);
-	const posts = getPosts(['src', 'app', locale, 'blog', 'posts']);
+	const posts = getPosts(['src', 'app', '[locale]', 'blog', 'posts', locale]);
 	const postsWithHtml = await Promise.all(posts.map(async (post) => ({
 		...post,
 		html: await markdownToHtml(post.content),
