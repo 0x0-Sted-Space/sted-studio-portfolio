@@ -31,6 +31,12 @@ const nextConfig = {
     // optimizeCss disabled due to critters dependency issue on Vercel
     // optimizeCss: true,
   },
+  // getPosts() in app/utils/utils.ts reads via a dynamically built path, which
+  // Vercel's file tracer can't statically resolve - it falls back to bundling
+  // the whole project (474MB of public/ images) into that function's output.
+  outputFileTracingExcludes: {
+    '*': ['./public/**'],
+  },
 };
 
 module.exports = withNextIntl(withMDX(nextConfig));
