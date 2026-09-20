@@ -44,6 +44,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
                     }
                 }
 
+                // Auth flow screens (sign-in, sign-up, oauth-callback, ...) aren't
+                // real content pages so they're not in `routes`, but they still
+                // need to render - otherwise this guard blocks them forever.
+                if (pathname?.startsWith('/handler')) {
+                    return true;
+                }
+
                 return false;
             };
 
