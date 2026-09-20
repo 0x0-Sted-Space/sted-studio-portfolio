@@ -1,10 +1,11 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
+import { Suspense, useEffect, useState, useTransition } from "react";
 
 import { Flex, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
+import "@/styles/header-responsive.css";
 
 import { routes, display } from "@/app/resources";
 
@@ -13,6 +14,8 @@ import { Locale, usePathname, useRouter } from "@/i18n/routing";
 import { renderContent } from "@/app/resources";
 import { useTranslations } from "next-intl";
 import { i18n } from "@/app/resources/config";
+import { HeaderAuth } from "@/components/HeaderAuth";
+import AppSwitcher from "@/components/AppSwitcher";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -33,6 +36,11 @@ export const Header = () => {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname() ?? "";
   const params = useParams();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function handleLanguageChange(locale: string) {
     const nextLocale = locale as Locale;
@@ -171,8 +179,16 @@ export const Header = () => {
         <Flex
           justifyContent="flex-end"
           alignItems="center"
+          gap="8"
           style={{ minWidth: 120 }}
         >
+          {/* Authentication UI - only render on client */}
+          {mounted && (
+            <Suspense fallback={null}>
+              <HeaderAuth />
+            </Suspense>
+          )}
+          
           {routing.locales.length > 1 && (
             <Flex
               background="surface"
@@ -203,34 +219,6 @@ export const Header = () => {
             {display.time && <TimeDisplay timeZone={person.location} />}
           </Flex>
         </Flex>
-        <style>{`
-                    @media (max-width: 600px) {
-                        .sted-logo-responsive {
-                            justify-content: center !important;
-                            align-items: center !important;
-                            margin-left: auto !important;
-                            margin-right: auto !important;
-                            width: 100% !important;
-                        }
-                        header[class*='position'] {
-                            flex-direction: column !important;
-                            align-items: center !important;
-                        }
-                    }
-                    @media (min-width: 601px) {
-                        .sted-logo-responsive {
-                            justify-content: flex-start !important;
-                            align-items: flex-start !important;
-                            margin-left: 0 !important;
-                            margin-right: auto !important;
-                            width: auto !important;
-                        }
-                        header[class*='position'] {
-                            flex-direction: row !important;
-                            align-items: center !important;
-                        }
-                    }
-                `}</style>
       </Flex>
     </>
   );
