@@ -67,7 +67,10 @@ function getMarkdownData(dir: string) {
 export function getPosts(customPath: string[] = []) {
     // Filter out empty strings and join the path
     const pathSegments = customPath.filter(segment => segment && segment.trim() !== '');
-    const postsDir = pathSegments.length > 0 ? path.join(process.cwd(), ...pathSegments) : process.cwd();
+    // turbopackIgnore: without this, Turbopack's static analysis can't resolve
+    // this dynamic join and falls back to tracing (and bundling) the entire
+    // project - including unrelated files with unrelated broken imports.
+    const postsDir = pathSegments.length > 0 ? path.join(/*turbopackIgnore: true*/ process.cwd(), ...pathSegments) : process.cwd();
     return getMarkdownData(postsDir);
 }
 

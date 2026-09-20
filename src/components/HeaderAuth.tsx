@@ -3,11 +3,12 @@
 import { Flex, Button } from '@/once-ui/components';
 import { useState } from 'react';
 import { StudioMenu } from './StudioMenu';
+import { useUser } from '@hexclave/next';
+import { hexclaveClientApp } from '@/hexclave/client';
 
-// Simple header auth - no StackAuth for now
-// Portfolio is public, auth will be added later for client interactions
 export function HeaderAuth() {
   const [isStudioMenuOpen, setIsStudioMenuOpen] = useState(false);
+  const user = useUser();
 
   const toggleStudioMenu = () => {
     setIsStudioMenuOpen(!isStudioMenuOpen);
@@ -20,15 +21,38 @@ export function HeaderAuth() {
   return (
     <>
       <Flex gap="8" alignItems="center">
-        {/* Contact button instead of auth for now */}
+        {user ? (
+          <Button onClick={() => user.signOut()} variant="secondary" size="s">
+            Sign Out
+          </Button>
+        ) : (
+          <>
+            <Button
+              onClick={() => hexclaveClientApp.redirectToSignIn()}
+              variant="secondary"
+              size="s"
+            >
+              Sign In
+            </Button>
+            <Button
+              onClick={() => hexclaveClientApp.redirectToSignUp()}
+              variant="primary"
+              size="s"
+            >
+              Sign Up
+            </Button>
+          </>
+        )}
+
+        {/* Contact button */}
         <Button
           onClick={() => window.location.href = '/#contact'}
-          variant="primary"
+          variant="tertiary"
           size="s"
         >
           Contact
         </Button>
-        
+
         {/* Studio Menu Burger Button */}
         <Button
           variant="tertiary"

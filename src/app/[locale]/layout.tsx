@@ -12,7 +12,8 @@ import { Source_Code_Pro } from 'next/font/google';
 
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
-import StackAuthProvider from "@/components/StackAuthProvider";
+import { HexclaveProvider, HexclaveTheme } from '@hexclave/next';
+import { hexclaveServerApp } from '@/hexclave/server';
 
 import { routing } from "@/i18n/routing";
 import { renderContent } from "@/app/resources";
@@ -89,7 +90,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 	const messages = await getMessages();
 	return (
 		<NextIntlClientProvider messages={messages}>
-			<StackAuthProvider>
+			<HexclaveProvider app={hexclaveServerApp}>
+				<HexclaveTheme>
 					<Flex
 						as="html" lang="en"
 						background="page"
@@ -133,7 +135,8 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
 							<Footer/>
 						</Flex>
 					</Flex>
-			</StackAuthProvider>
+				</HexclaveTheme>
+			</HexclaveProvider>
 		</NextIntlClientProvider>
 	);
 }

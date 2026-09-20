@@ -1,18 +1,18 @@
-import { stackServerApp, isStackAuthConfigured } from './stack-server';
+import { hexclaveServerApp } from '@/hexclave/server';
 import { logAuthEvent, AuthEventType } from './session-monitoring';
 import { AuthError, createAuthError, normalizeError } from './auth-errors';
 import { retryAuth } from './auth-retry';
 import { handleAuthFallback, cacheSuccessfulAuth } from './auth-fallbacks';
 
 export async function getCurrentUser() {
-  // If StackAuth is not configured, return null (public mode)
-  if (!isStackAuthConfigured || !stackServerApp) {
+  // If Hexclave is not configured, return null (public mode)
+  if (!hexclaveServerApp) {
     return null;
   }
 
   try {
     const user = await retryAuth(
-      () => stackServerApp.getUser(),
+      () => hexclaveServerApp.getUser(),
       { source: 'getCurrentUser' }
     );
     
@@ -53,8 +53,8 @@ export async function getCurrentUser() {
 }
 
 export async function requireAuth() {
-  // If StackAuth is not configured, throw error
-  if (!isStackAuthConfigured || !stackServerApp) {
+  // If Hexclave is not configured, throw error
+  if (!hexclaveServerApp) {
     throw createAuthError.sessionExpired('Authentication not configured');
   }
 
@@ -89,12 +89,12 @@ export async function requireAuth() {
 }
 
 export async function hasRole(requiredRole: string) {
-  // If StackAuth is not configured, return false
-  if (!isStackAuthConfigured || !stackServerApp) {
+  // If Hexclave is not configured, return false
+  if (!hexclaveServerApp) {
     return false;
   }
 
-  const user = await stackServerApp.getUser();
+  const user = await hexclaveServerApp.getUser();
   if (!user) return false;
   
   // Implement your role checking logic

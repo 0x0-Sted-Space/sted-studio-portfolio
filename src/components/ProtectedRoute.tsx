@@ -1,8 +1,9 @@
 'use client';
 
-import { useUser } from '@stackframe/stack';
+import { useUser } from '@hexclave/next';
 import { ReactNode } from 'react';
 import { Flex, Heading, Button } from '@/once-ui/components';
+import { hexclaveClientApp } from '@/hexclave/client';
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -28,14 +29,14 @@ export default function ProtectedRoute({
           </p>
           <div className="flex gap-2">
             <Button
-              onClick={() => user?.signIn()}
+              onClick={() => hexclaveClientApp.redirectToSignIn()}
               size="l"
               variant="primary"
             >
               Sign In
             </Button>
             <Button
-              onClick={() => user?.signUp()}
+              onClick={() => hexclaveClientApp.redirectToSignUp()}
               size="l"
               variant="secondary"
             >

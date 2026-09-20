@@ -1,75 +1,73 @@
 'use client';
 
-import { useUser } from '@stackframe/stack';
-import { Flex, Heading, Text, Button } from '@/once-ui/components';
+import { useUser } from '@hexclave/next';
+import { Flex, Text, Button } from '@/once-ui/components';
+import { useParams } from 'next/navigation';
+import { hexclaveClientApp } from '@/hexclave/client';
 
 export default function AuthTestPage() {
   const user = useUser();
+  const params = useParams();
+  const locale = params?.locale || 'en';
 
   return (
     <Flex
-      fillWidth
-      paddingY="l"
       direction="column"
+      gap="16"
+      padding="32"
+      maxWidth="600"
       alignItems="center"
-      gap="m"
     >
-      <Heading variant="display-strong-s">
-        StackAuth Test Page
-      </Heading>
-      
-      {user ? (
-        <Flex direction="column" alignItems="center" gap="s">
-          <Text variant="body-default-m">
-            ✅ Authentication Working!
+      <Text variant="heading-strong-xl">Hexclave Auth Test</Text>
+
+      <Flex direction="column" gap="8" fillWidth>
+        <Text variant="heading-strong-m">Configuration Status</Text>
+        <Flex direction="column" gap="4">
+          <Text>
+            <strong>Current Locale:</strong> {locale}
           </Text>
-          <Text variant="body-default-s">
-            Welcome, {user.displayName || user.primaryEmail}
+          <Text>
+            <strong>User Status:</strong> {user ? `✅ Authenticated as ${user.displayName || user.primaryEmail}` : '❌ Not authenticated'}
           </Text>
-          <Text variant="body-default-xs">
-            User ID: {user.id}
-          </Text>
-          <Button
-            onClick={() => user.signOut()}
-            variant="secondary"
-            size="m"
-          >
-            Sign Out
-          </Button>
         </Flex>
-      ) : (
-        <Flex direction="column" alignItems="center" gap="s">
-          <Text variant="body-default-m">
-            🔒 Not authenticated
-          </Text>
-          <Flex gap="s">
+      </Flex>
+
+      {!user && (
+        <Flex direction="column" gap="8" fillWidth>
+          <Text variant="heading-strong-m">Authentication Actions</Text>
+          <Flex gap="8">
             <Button
-              onClick={() => user?.signIn()}
-              variant="primary"
-              size="m"
+              onClick={() => hexclaveClientApp.redirectToSignIn()}
+              variant="secondary"
             >
-              Sign In
+              Test Sign In
             </Button>
             <Button
-              onClick={() => user?.signUp()}
-              variant="secondary"
-              size="m"
+              onClick={() => hexclaveClientApp.redirectToSignUp()}
+              variant="primary"
             >
-              Sign Up
+              Test Sign Up
             </Button>
           </Flex>
         </Flex>
       )}
-      
-      <Text variant="body-default-xs" style={{ marginTop: '2rem' }}>
-        Environment Check:
-      </Text>
-      <Text variant="body-default-xs">
-        Project ID: {process.env.NEXT_PUBLIC_STACK_PROJECT_ID ? '✅ Set' : '❌ Missing'}
-      </Text>
-      <Text variant="body-default-xs">
-        Client Key: {process.env.NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY ? '✅ Set' : '❌ Missing'}
-      </Text>
+
+      {user && (
+        <Flex direction="column" gap="8" fillWidth>
+          <Text variant="heading-strong-m">User Information</Text>
+          <Flex direction="column" gap="2">
+            <Text><strong>Display Name:</strong> {user.displayName || 'Not set'}</Text>
+            <Text><strong>Email:</strong> {user.primaryEmail || 'Not set'}</Text>
+            <Text><strong>Profile Image:</strong> {user.profileImageUrl ? '✅ Set' : '❌ Not set'}</Text>
+          </Flex>
+          <Button
+            onClick={() => user.signOut()}
+            variant="danger"
+          >
+            Sign Out
+          </Button>
+        </Flex>
+      )}
     </Flex>
   );
 }
