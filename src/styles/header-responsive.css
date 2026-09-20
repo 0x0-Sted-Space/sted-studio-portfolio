@@ -1,0 +1,116 @@
+/* Responsive header styles */
+@media (max-width: 600px) {
+    .sted-logo-responsive {
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
+    }
+    
+    header[class*='position'] {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+    
+    header[class*='position'] > div:last-child {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    /* App switcher mobile styles */
+    .app-switcher-header {
+        order: -1; /* Show app switcher first on mobile */
+    }
+    
+    .app-switcher-dropdown button {
+        padding: 8px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    .app-switcher-dropdown .absolute {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90vw !important;
+        max-width: 320px !important;
+    }
+}
+
+@media (min-width: 601px) {
+    .sted-logo-responsive {
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        width: auto !important;
+    }
+    
+    header[class*='position'] {
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+    
+    /* App switcher desktop styles */
+    .app-switcher-header {
+        order: 0;
+    }
+    
+    .app-switcher-dropdown .absolute {
+        right: 0 !important;
+        left: auto !important;
+        transform: none !important;
+        width: auto !important;
+        min-width: 280px !important;
+    }
+}
+
+/* App switcher specific styles */
+.app-switcher-header .app-switcher-dropdown {
+    position: relative;
+}
+
+.app-switcher-header button {
+    background: var(--surface, white);
+    border: 1px solid var(--neutral-medium, #e5e7eb);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.app-switcher-header button:hover {
+    background: var(--surface-hover, #f9fafb);
+    border-color: var(--neutral-strong, #d1d5db);
+}
+
+.app-switcher-header button:focus {
+    outline: 2px solid var(--accent, #3b82f6);
+    outline-offset: 2px;
+}
+
+.app-switcher-header .absolute {
+    background: var(--surface, white);
+    border: 1px solid var(--neutral-medium, #e5e7eb);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .app-switcher-header button {
+        background: var(--surface-dark, #1f2937);
+        border-color: var(--neutral-medium-dark, #374151);
+        color: var(--text-primary-dark, white);
+    }
+    
+    .app-switcher-header button:hover {
+        background: var(--surface-hover-dark, #374151);
+        border-color: var(--neutral-strong-dark, #4b5563);
+    }
+    
+    .app-switcher-header .absolute {
+        background: var(--surface-dark, #1f2937);
+        border-color: var(--neutral-medium-dark, #374151);
+    }
+}
